@@ -1,6 +1,5 @@
 package com.example.microservices_users.dto;
 
-import com.example.microservices_users.entity.Account;
 import com.example.microservices_users.entity.Authority;
 import com.example.microservices_users.entity.User;
 import jakarta.validation.constraints.Min;
@@ -20,7 +19,7 @@ public class DTORequestUser {
     private String surname;
     private String phone_number;
     private String email;
-    private List<Long> accounts;
+    //private List<Long> accounts;
     private List<String> authorities;
     private String password;
 
@@ -29,7 +28,7 @@ public class DTORequestUser {
         this.surname = surname;
         this.phone_number = phone_number;
         this.email = email;
-        this.accounts = accounts;
+        //this.accounts = accounts;
         this.authorities = authorities;
         this.password = password;
     }
@@ -40,10 +39,10 @@ public class DTORequestUser {
         this.surname = dto.getSurname();
         this.phone_number = dto.getPhone_number();
         this.email = dto.getEmail();
-        this.accounts = new ArrayList<>();
-        for (Account acc : dto.getAccount_list()) {
-            this.accounts.add(acc.getId());
-        }
+        //this.accounts = new ArrayList<>();
+        //for (Account acc : dto.getAccount_list()) {
+        //    this.accounts.add(acc.getId());
+        //}
         this.authorities = new ArrayList<>();
         for (Authority auth : dto.getAuthorities()) {
             this.authorities.add(auth.getName());

@@ -3,14 +3,10 @@ package com.example.microservices_users.service;
 import com.example.microservices_users.dto.DTORequestUser;
 import com.example.microservices_users.dto.DTOResponseUser;
 import com.example.microservices_users.entity.User;
-import com.example.microservices_users.exception.EnumUserException;
-import com.example.microservices_users.exception.UserException;
-import com.example.microservices_users.repository.AccountRepository;
 import com.example.microservices_users.repository.AuthorityRepository;
 import com.example.microservices_users.repository.UserRepository;
 import com.example.microservices_users.exception.NotFoundException;
 import jakarta.transaction.Transactional;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -23,7 +19,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final RestTemplate restTemplate;
 
-    public UserService(UserRepository userRepository, RestTemplate restTemplate, AccountRepository accountRepository, AuthorityRepository authorityRepository, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, RestTemplate restTemplate, AuthorityRepository authorityRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.restTemplate = restTemplate;
     }

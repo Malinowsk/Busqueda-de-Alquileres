@@ -68,34 +68,4 @@ public class AuthController {
         return new ResponseEntity<>(new UserController.JWTToken(jwt), httpHeaders, HttpStatus.OK);
     }
 
-    @Operation(summary = "Verificar permisos de administrador",
-            description = "Este endpoint verifica si el usuario tiene permisos de administrador.")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "OK", content = @io.swagger.v3.oas.annotations.media.Content(mediaType = "application/json")),
-    })
-    @GetMapping("/admin")
-    public Boolean checkPermissionsAdmin(){
-        return this.authService.checkPermissionsAdmin();
-    }
-
-    @Operation(summary = "Verificar permisos de usuario",
-            description = "Este endpoint verifica si el usuario tiene permisos de usuario.")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "OK", content = @io.swagger.v3.oas.annotations.media.Content(mediaType = "application/json")),
-    })
-    @GetMapping("/usuario")
-    public Boolean checkPermissionsUser(){
-        return this.authService.checkPermissionsUser();
-    }
-
-    @Operation(summary = "Verificar permisos de mantenimiento",
-            description = "Este endpoint verifica si el usuario tiene permisos de mantenimiento.")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "OK", content = @io.swagger.v3.oas.annotations.media.Content(mediaType = "application/json")),
-    })
-    @GetMapping("/mantenimiento")
-    public Boolean checkPermissionsMaintenance(){
-        return this.authService.checkPermissionsMaintenance();
-    }
-
 }

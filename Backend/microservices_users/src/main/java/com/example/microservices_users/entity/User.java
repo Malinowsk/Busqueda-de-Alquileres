@@ -37,10 +37,6 @@ public class User implements Serializable {
     @Column
     private String password;
 
-
-    @ManyToMany (fetch = FetchType.LAZY)
-    private List<Account> account_list;
-
     @ManyToMany (fetch = FetchType.LAZY)
     private List<Authority> authorities;
 
@@ -57,6 +53,7 @@ public class User implements Serializable {
         this.surname = dto.getSurname();
         this.phone_number = dto.getPhone_number();
         this.email = dto.getEmail();
+
     }
     public User(DTOResponseUser dto) {
         this.id = dto.getId();
@@ -64,7 +61,7 @@ public class User implements Serializable {
         this.surname = dto.getSurname();
         this.phone_number = dto.getPhone_number();
         this.email = dto.getEmail();
-        this.account_list = dto.getAccount_list();
+        //this.account_list = dto.getAccount_list();
         this.authorities = dto.getAuthorities();
     }
 

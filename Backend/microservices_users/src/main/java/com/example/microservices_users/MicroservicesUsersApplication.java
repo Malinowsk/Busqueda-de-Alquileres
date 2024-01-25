@@ -1,9 +1,6 @@
 package com.example.microservices_users;
 
-import com.example.microservices_users.entity.Account;
 import com.example.microservices_users.entity.Authority;
-import com.example.microservices_users.entity.User;
-import com.example.microservices_users.repository.AccountRepository;
 import com.example.microservices_users.repository.AuthorityRepository;
 import com.example.microservices_users.repository.UserRepository;
 import jakarta.annotation.PostConstruct;
@@ -11,22 +8,15 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-
 @SpringBootApplication
 public class MicroservicesUsersApplication {
 
     private final PasswordEncoder passwordEncoder;
-    private final AccountRepository accountRepo;
     private final UserRepository userRepo;
     private final AuthorityRepository authRepo;
 
-    public MicroservicesUsersApplication(PasswordEncoder passwordEncoder, AccountRepository accountRepo, UserRepository userRepo, AuthorityRepository authRepo) {
+    public MicroservicesUsersApplication(PasswordEncoder passwordEncoder,  UserRepository userRepo, AuthorityRepository authRepo) {
         this.passwordEncoder = passwordEncoder;
-        this.accountRepo = accountRepo;
         this.userRepo = userRepo;
         this.authRepo = authRepo;
     }
@@ -44,6 +34,8 @@ public class MicroservicesUsersApplication {
         authRepo.save(auth1);
         authRepo.save(auth2);
         authRepo.save(auth3);
+
+/*
 
         //Creacion de usuarios
         List<User> users = new ArrayList<>();
@@ -144,11 +136,11 @@ public class MicroservicesUsersApplication {
         Account account1 = new Account(1000.0, Timestamp.valueOf(LocalDateTime.parse("2023-10-27T10:00:00")));
         account1.setUsers(usersForAccount1);
         accounts1.add(account1);
-        users.get(0).setAccount_list(accounts1);
-        users.get(1).setAccount_list(accounts1);
-        users.get(2).setAccount_list(accounts1);
-        users.get(3).setAccount_list(accounts1);
-        users.get(4).setAccount_list(accounts1);
+        //users.get(0).setAccount_list(accounts1);
+        //users.get(1).setAccount_list(accounts1);
+        //users.get(2).setAccount_list(accounts1);
+        //users.get(3).setAccount_list(accounts1);
+        //users.get(4).setAccount_list(accounts1);
 
 
         List<Account> accounts2 = new ArrayList<>();
@@ -159,8 +151,8 @@ public class MicroservicesUsersApplication {
         Account account2 = new Account(1500.0, Timestamp.valueOf(LocalDateTime.parse("2023-10-28T11:00:00")));
         account2.setUsers(usersForAccount2);
         accounts2.add(account2);
-        users.get(5).setAccount_list(accounts2);
-        users.get(6).setAccount_list(accounts2);
+        //users.get(5).setAccount_list(accounts2);
+        //users.get(6).setAccount_list(accounts2);
 
 
         List<Account> accounts3 = new ArrayList<>();
@@ -172,9 +164,9 @@ public class MicroservicesUsersApplication {
         Account account3 = new Account(1200.0, Timestamp.valueOf(LocalDateTime.parse("2023-10-29T12:00:00")));
         account3.setUsers(usersForAccount3);
         accounts3.add(account3);
-        users.get(7).setAccount_list(accounts3);
-        users.get(8).setAccount_list(accounts3);
-        users.get(9).setAccount_list(accounts3);
+        //users.get(7).setAccount_list(accounts3);
+        //users.get(8).setAccount_list(accounts3);
+        //users.get(9).setAccount_list(accounts3);
 
         //Guardamos las cuentas en la bbdd
         accountRepo.saveAll(accounts1);
@@ -182,6 +174,7 @@ public class MicroservicesUsersApplication {
         accountRepo.saveAll(accounts3);
 
         userRepo.saveAll(users);
+*/
 
     }
 }
