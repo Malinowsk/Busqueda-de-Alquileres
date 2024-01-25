@@ -58,7 +58,6 @@ public class AuthController {
     })
     @PostMapping("/authenticate")
     public ResponseEntity<UserController.JWTToken> authenticate(@Valid @RequestBody AuthRequestDTO request ) {
-        System.out.println(request);
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken( request.getEmail(), request.getPassword() );
         Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -67,5 +66,4 @@ public class AuthController {
         httpHeaders.add( JWTFilter.AUTHORIZATION_HEADER, "Bearer " + jwt );
         return new ResponseEntity<>(new UserController.JWTToken(jwt), httpHeaders, HttpStatus.OK);
     }
-
 }
