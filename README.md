@@ -1,4 +1,4 @@
-# Proyecto de Aplicación de Búsqueda de Alquileres en Tandil
+# Aplicación de Búsqueda de Alquileres en Tandil
 
 ## Descripción General
 
