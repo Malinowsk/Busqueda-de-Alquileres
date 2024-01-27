@@ -1,6 +1,6 @@
 # Aplicación de Búsqueda de Alquileres en Tandil
 
-## Descripción General
+## Motivacion
 
 En el dinámico y a menudo complejo mercado de alquileres de la ciudad de Tandil, surge una necesidad imperante de facilitar el proceso de búsqueda de viviendas para inquilinos potenciales. En respuesta a esta demanda, nuestro equipo se ha embarcado en el desarrollo de una innovadora aplicación web destinada a transformar la experiencia de encontrar el alquiler perfecto.
 
@@ -10,7 +10,7 @@ El principal objetivo de este proyecto es desarrollar una plataforma intuitiva y
 
 ### Tecnologías Utilizadas
 
-Para lograr nuestros objetivos, estamos implementando un conjunto de tecnologías avanzadas que incluyen:
+Para lograr nuestros objetivos, estamos implementando un conjunto de tecnologías actualizadas que incluyen:
 
 - **Java**: Como lenguaje de programación principal, proporcionando una base sólida y confiable para nuestra aplicación.
 - **Spring Framework**: Un robusto framework de Java que facilita la creación de aplicaciones de alto rendimiento.
