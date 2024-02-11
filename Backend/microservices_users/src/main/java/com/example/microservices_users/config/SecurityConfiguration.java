@@ -20,6 +20,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import static org.springframework.security.config.Customizer.withDefaults;
 
 @EnableWebSecurity
 @EnableMethodSecurity
@@ -41,14 +46,27 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain filterChain( HttpSecurity http ) throws Exception {
-        http
-                .csrf(AbstractHttpConfigurer::disable)// descativo el crsf
+        http//.cors().and() // Habilitar configuración CORS
+                //.csrf().disable() // Deshabilitar CSRF
+                //.authorizeRequests()
+                //.requestMatchers( "api/auth/authenticate", "/localhost:8007/api/auth/register").permitAll()
+                //.requestMatchers("/**").permitAll(); // Permitir todas las solicitudes
+
+
+                //.cors(AbstractHttpConfigurer::disable)
+                .csrf(AbstractHttpConfigurer::disable)
+
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> {
                     authorize
+                            //.csrf().disable() // Deshabilitar CSRF
+                            .requestMatchers("/**").permitAll() // Permitir todas las solicitudes
+                            .requestMatchers( "/localhost:8000/**").permitAll()
                             .requestMatchers( "/swagger-ui/**").permitAll()
                             .requestMatchers( "/v3/api-docs/**").permitAll()
-                            .requestMatchers( HttpMethod.POST, "api/auth/authenticate", "api/auth/register").permitAll()
+                            .requestMatchers( "/localhost:3000/").permitAll()
+                            .requestMatchers( "api/auth/authenticate", "/localhost:8007/api/auth/register").permitAll()
+
 
                             .requestMatchers( HttpMethod.POST, "api/users").hasRole(Constants.ADMIN)
                             .requestMatchers( HttpMethod.GET, "api/users").hasRole(Constants.ADMIN)
@@ -60,17 +78,28 @@ public class SecurityConfiguration {
                             .authenticated();
                 } )
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
-                .httpBasic(Customizer.withDefaults());
+                .httpBasic(withDefaults());
+
 
         return http.build();
     }
 
-    /**
-     * Nuestra configuracion de JWT.
-     */
-    private JwtConfigurer securityConfigurerAdapter() {
-        return new JwtConfigurer(tokenProvider);
+
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.addAllowedOrigin("http://localhost:3000");
+        configuration.addAllowedMethod("GET");
+        configuration.addAllowedMethod("POST");
+        configuration.addAllowedMethod("PUT");
+        configuration.addAllowedMethod("DELETE");
+        configuration.addAllowedMethod("OPTIONS");
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/api/**", configuration);
+        return source;
     }
+
 
 
     ////////////////////////////////////////////////////////////////////////////////

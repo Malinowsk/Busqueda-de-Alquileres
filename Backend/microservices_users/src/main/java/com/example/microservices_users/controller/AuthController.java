@@ -21,9 +21,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+
 @RestController
 @Data
 @RequestMapping("api/auth")
+//@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST, RequestMethod.OPTIONS})
 public class AuthController {
 
     private final AuthService authService;
@@ -45,10 +47,13 @@ public class AuthController {
             @ApiResponse(responseCode = "201", description = "Created", content = @io.swagger.v3.oas.annotations.media.Content(mediaType = "application/json")),
     })
     @PostMapping("/register")
+    //@CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<DTOResponseUser> register(@Valid @RequestBody DTORequestUser request ){
         final var newUser = this.authService.createUser( request );
+        System.out.println(newUser);
         return new ResponseEntity<>( newUser, HttpStatus.CREATED );
     }
+
 
     // INICIAR SESION
     @Operation(summary = "Iniciar sesión",
@@ -66,4 +71,5 @@ public class AuthController {
         httpHeaders.add( JWTFilter.AUTHORIZATION_HEADER, "Bearer " + jwt );
         return new ResponseEntity<>(new UserController.JWTToken(jwt), httpHeaders, HttpStatus.OK);
     }
+
 }

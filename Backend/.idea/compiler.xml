@@ -11,10 +11,16 @@
         <module name="api_gateway" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="api_gateway (1)" target="17" />
+      <module name="api_gateway (2)" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="api_gateway" options="-parameters" />
+      <module name="api_gateway (1)" options="-parameters" />
+      <module name="api_gateway (2)" options="-parameters" />
       <module name="microservices_users" options="-parameters" />
     </option>
   </component>
