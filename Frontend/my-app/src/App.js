@@ -1,18 +1,21 @@
-import './App.css';
+// import './App.css';
 import Register from './componentes/register/register';
 import ConfirmationPage from './componentes/confirmation-page/confirmation-page';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import NavBar from './componentes/nav-bar/nav-bar';
+import Footer from "./componentes/footer/footer";
 
 function App() {
   return (
     <div>
-      <h1>Mi Aplicación React</h1>
       <Router>
+        <NavBar/>
         <Routes>
-          <Route path="/" element={<Register />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/confirmation" element={<ConfirmationPage />} />
         </Routes>
-    </Router>
+        <Footer/>
+      </Router>
     </div>
   );
 }

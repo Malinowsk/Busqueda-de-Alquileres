@@ -1,6 +1,6 @@
 // Register.js
 import React, { useState } from 'react';
-import './register.css'; // Asegúrate de ajustar la ruta si es necesario
+// import './register.css'; // Asegúrate de ajustar la ruta si es necesario
 import { useNavigate } from 'react-router-dom';
 
 
