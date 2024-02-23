@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="microservices_users" />
+        <module name="microservicio_alquileres" />
         <module name="api_gateway" />
       </profile>
     </annotationProcessing>
@@ -22,6 +23,7 @@
       <module name="api_gateway (1)" options="-parameters" />
       <module name="api_gateway (2)" options="-parameters" />
       <module name="microservices_users" options="-parameters" />
+      <module name="microservicio_alquileres" options="-parameters" />
     </option>
   </component>
 </project>

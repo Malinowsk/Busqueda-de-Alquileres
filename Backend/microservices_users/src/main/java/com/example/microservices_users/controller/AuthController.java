@@ -50,7 +50,6 @@ public class AuthController {
     //@CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<DTOResponseUser> register(@Valid @RequestBody DTORequestUser request ){
         final var newUser = this.authService.createUser( request );
-        System.out.println(newUser);
         return new ResponseEntity<>( newUser, HttpStatus.CREATED );
     }
 
