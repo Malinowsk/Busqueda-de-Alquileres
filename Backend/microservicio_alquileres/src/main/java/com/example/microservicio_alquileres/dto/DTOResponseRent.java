@@ -13,18 +13,32 @@ import java.util.List;
 public class DTOResponseRent {
     private Long id;
     private String name;
-    private String surname;
-    private String phone_number;
     private String email;
-    //private List<Authority> authorities;
+    private String phone_number;
+    private String titulo;
+    private String descripcion;
+    private String tipo_de_propiedad;
+    private int pers_min;
+    private int pers_max;
+    private int habitaciones;
+    private int banios;
+    private String periodo;
+    private String moneda;
 
 
-    public DTOResponseRent(Rent u) {
-        this.id = u.getId();
-        this.name = u.getName();
-        this.surname = u.getSurname();
-        this.phone_number = u.getPhone_number();
-        this.email = u.getEmail();
-        //this.authorities = u.getAuthorities();
+    public DTOResponseRent(Rent dto) {
+        this.id = dto.getId();
+        this.name = dto.getName();
+        this.titulo = dto.getTitulo();
+        this.phone_number = dto.getPhone_number();
+        this.email = dto.getEmail();
+        this.descripcion = dto.getDescripcion();
+        this.tipo_de_propiedad = dto.getTipo_de_propiedad();
+        this.periodo = dto.getPeriodo();
+        this.moneda = dto.getMoneda();
+        this.pers_min = dto.getPers_min();
+        this.pers_max = dto.getPers_max();
+        this.habitaciones = dto.getHabitaciones();
+        this.banios = dto.getBanios();
     }
 }

@@ -12,6 +12,18 @@ services:
       MYSQL_PASSWORD: sa
     volumes:
       - mysql_data:/var/lib/mysql
+  mysql_alq:
+    image: mysql:latest
+    container_name: my-mysql-container_alq
+    ports:
+      - "3307:3307"
+    environment:
+      MYSQL_ROOT_PASSWORD: sa
+      MYSQL_DATABASE: alquileres
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: sa
+    volumes:
+      - mysql_data1:/var/lib/mysql_alq
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
     container_name: my-phpmyadmin-container
@@ -24,6 +36,7 @@ services:
       - "443:80"
     depends_on:
       - mysql
-
+      - mysql_alq
 volumes:
   mysql_data:
+  mysql_data1:
